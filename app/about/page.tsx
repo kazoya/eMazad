@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Container, PageHero, SectionTitle } from "@/components/ui";
-import { site } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "من نحن",
@@ -45,11 +44,6 @@ export default function AboutPage() {
           <p>
             مهمتنا هي إحداث نقلة في تجربة المزادات عبر الإنترنت من خلال الاستفادة من أحدث التقنيات، بما في ذلك
             التقييمات المدعومة بالذكاء الاصطناعي، والتحقق القوي من المستخدمين، والالتزام بالشفافية والمزايدة العادلة.
-          </p>
-          <p className="mt-4 text-mist">
-            هذه الواجهة الجديدة تقدّم محتوى منصة{" "}
-            <a href={site.sourceUrl} target="_blank" rel="noreferrer" className="text-gold-2 hover:underline">{site.source}</a>{" "}
-            بتصميم أحدث وتجربة أسرع على الجوال.
           </p>
         </div>
         <div className="rounded-[2rem] border border-gold/25 bg-gradient-to-br from-gold/10 to-transparent p-8">

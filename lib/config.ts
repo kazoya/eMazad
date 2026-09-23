@@ -2,8 +2,6 @@ export const site = {
   name: "إي مزاد",
   nameEn: "eMazad",
   tagline: "مزادات موثوقة للعقارات والمركبات والنمر المميزة والمقتنيات في الأردن",
-  source: "مقاصة جو",
-  sourceUrl: "https://www.muqasa-jo.com",
   email: "info@emazad.com",
   whatsapp: "962791706000",
   whatsappLabel: "+962 7 9170 6000",

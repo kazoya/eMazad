@@ -18,7 +18,7 @@ export type Section = {
   tone: string;
 };
 
-// نفس أقسام المزادات في مقاصة (src/data/auction-taxonomy.ts + src/lib/i18n.ts)
+// أقسام المزادات
 export const sections: Section[] = [
   { id: "real_estate", name: "عقارات", description: "المباني والشقق والفلل والأراضي", icon: "Building2", tone: "from-emerald-500/25 to-teal-400/5" },
   { id: "vehicles", name: "سيارات", description: "مزادات السيارات والمركبات", icon: "Car", tone: "from-sky-500/25 to-cyan-400/5" },

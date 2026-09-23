@@ -56,7 +56,7 @@ export function PageHero({ eyebrow, title, description }: { eyebrow: string; tit
 export function DemoNote({ className }: { className?: string }) {
   return (
     <p className={cn("rounded-2xl border border-line bg-white/[0.03] px-4 py-3 text-xs leading-6 text-mist", className)}>
-      هذه نسخة عرض بواجهة جديدة لمحتوى منصة مقاصة. الأسعار والمزايدات هنا عينات للتوضيح؛ المزايدة الملزمة والدفع
+      هذه نسخة عرض. الأسعار والمزايدات هنا عينات للتوضيح؛ المزايدة الملزمة والدفع
       وإعلان الفائز تتم على المنصة الرسمية وبعد تحقق بشري.
     </p>
   );

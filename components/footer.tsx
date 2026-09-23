@@ -45,13 +45,12 @@ export function Footer() {
             <li><Link href="/about" className="hover:text-gold-2">من نحن</Link></li>
             <li><Link href="/about#how" className="hover:text-gold-2">كيف تعمل المزادات</Link></li>
             <li><Link href="/about#terms" className="hover:text-gold-2">الشروط والأحكام</Link></li>
-            <li><a href={site.sourceUrl} target="_blank" rel="noreferrer" className="hover:text-gold-2">المنصة الحية: {site.source}</a></li>
           </ul>
         </div>
       </div>
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-mist/80 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© 2026 إي مزاد — واجهة جديدة لمحتوى منصة {site.source}.</p>
+          <p>© 2026 إي مزاد — جميع الحقوق محفوظة.</p>
           <p>المزادات المعروضة هنا عينات عرض؛ المزايدة الفعلية والدفع يتمّان على المنصة الرسمية.</p>
         </div>
       </div>
