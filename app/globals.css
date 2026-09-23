@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-reem), var(--font-plex), ui-sans-serif, sans-serif;
+  --color-ink: #0b1220;
+  --color-ink-2: #111a2e;
+  --color-ink-3: #1a2540;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-gold: #d4a94a;
+  --color-gold-2: #f1d38a;
+  --color-gold-3: #a8802b;
+  --color-cream: #f7f1e3;
+  --color-mist: #aab4c8;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: #e8ecf4;
+}
+
+::selection {
+  background: #d4a94a;
+  color: #0b1220;
+}
+
+.bg-grain {
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgb(212 169 74 / 0.16), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgb(56 97 190 / 0.18), transparent 60%);
+}
+
+.gold-text {
+  background: linear-gradient(100deg, #f7e2a6 0%, #d4a94a 45%, #f1d38a 70%, #a8802b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgb(17 26 46 / 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.35s;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgb(212 169 74 / 0.45);
+  box-shadow: 0 24px 60px -24px rgb(212 169 74 / 0.35);
+}
+
+.ring-gold {
+  box-shadow: inset 0 0 0 1px rgb(212 169 74 / 0.35);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.live-dot {
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee, .live-dot, .rise { animation: none; }
+  .card-lift:hover { transform: none; }
+}
