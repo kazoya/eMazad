@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-reem), var(--font-plex), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-kufi), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-kufi), ui-sans-serif, sans-serif;
   --color-ink: #0b1220;
   --color-ink-2: #111a2e;
   --color-ink-3: #1a2540;
