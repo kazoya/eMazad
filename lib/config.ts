@@ -4,9 +4,10 @@ export const site = {
   tagline: "مزادات موثوقة للعقارات والمركبات والنمر المميزة والمقتنيات في الأردن",
   source: "مقاصة جو",
   sourceUrl: "https://www.muqasa-jo.com",
-  email: "info@muqasa-jo.com",
-  whatsapp: "962787523192",
-  whatsappLabel: "+962 78 752 3192",
+  email: "info@emazad.com",
+  whatsapp: "962791706000",
+  whatsappLabel: "+962 7 9170 6000",
+  whatsappName: "د. محمد صلاح",
   currency: "JOD",
 };
 

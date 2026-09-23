@@ -16,7 +16,7 @@ export function Footer() {
               <Mail className="size-3.5" /> {site.email}
             </a>
             <a href={waLink("مرحباً إي مزاد")} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-xs text-mist hover:text-white">
-              <MessageCircle className="size-3.5" /> <span dir="ltr">{site.whatsappLabel}</span>
+              <MessageCircle className="size-3.5" /> {site.whatsappName} · <span dir="ltr">{site.whatsappLabel}</span>
             </a>
           </div>
         </div>
