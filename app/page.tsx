@@ -10,6 +10,7 @@ import { Container, Eyebrow, SectionTitle } from "@/components/ui";
 import { auctions, countBySection, getSection, priceOf, sections } from "@/lib/data";
 import { jod, num } from "@/lib/utils";
 import { T } from "@/components/stage";
+import { CountUp } from "@/components/count-up";
 
 export default function HomePage() {
   const spotlight = auctions.find((a) => a.id === "1")!;
@@ -38,7 +39,7 @@ export default function HomePage() {
               en="An electronic auction platform that connects buyers and sellers in a safe room: property, cars, plates, jewelry, and collectibles, with AI-assisted appraisal and transparent bidding."
             />
           </p>
-          <form action="/auctions" className="glass flex items-center gap-2 rounded-full p-1.5 ps-5">
+          <form action="/auctions" className="search-floor glass flex items-center gap-2 rounded-full p-1.5 ps-5">
             <Search className="size-5 shrink-0 text-mist" />
             <input
               name="q"
@@ -59,7 +60,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <Link href={`/auctions/${spotlight.id}`} className="rise group relative block [animation-delay:150ms]">
+        <Link href={`/auctions/${spotlight.id}`} className="tilt rise group relative block [animation-delay:150ms]">
           <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-gold/25 via-transparent to-blue-500/20 blur-2xl" />
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 shadow-2xl">
             <LotVisual auction={spotlight} size="lg" priority className="aspect-[16/11]" />
@@ -84,16 +85,18 @@ export default function HomePage() {
 
       {/* Stats */}
       <Container>
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-4">
+        <div className="reveal stagger grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-4">
           {[
-            { label: "مزاد نشط", value: num(auctions.length), icon: Gavel },
-            { label: "إجمالي المزايدات", value: num(totalBids), icon: TrendingUp },
-            { label: "القيمة الحالية للمزادات", value: jod(totalValue), icon: BadgeCheck },
-            { label: "قسماً متخصصاً", value: num(sections.length), icon: Sparkles },
+            { label: "مزاد نشط", value: auctions.length, kind: "num" as const, icon: Gavel },
+            { label: "إجمالي المزايدات", value: totalBids, kind: "num" as const, icon: TrendingUp },
+            { label: "القيمة الحالية للمزادات", value: totalValue, kind: "jod" as const, icon: BadgeCheck },
+            { label: "قسماً متخصصاً", value: sections.length, kind: "num" as const, icon: Sparkles },
           ].map((s) => (
             <div key={s.label} className="bg-ink-2 p-6">
               <s.icon className="mb-3 size-5 text-gold" />
-              <div className="tabular text-2xl font-bold text-white md:text-3xl">{s.value}</div>
+              <div className="tabular text-2xl font-bold text-white md:text-3xl">
+                <CountUp value={s.value} kind={s.kind} />
+              </div>
               <div className="mt-1 text-sm text-mist">{s.label}</div>
             </div>
           ))}
@@ -101,7 +104,7 @@ export default function HomePage() {
       </Container>
 
       {/* Ticker */}
-      <div className="mt-14 overflow-hidden border-y border-line bg-ink-2/50 py-4" aria-hidden>
+      <div className="ticker mt-14 overflow-hidden border-y border-line bg-ink-2/50 py-4" aria-hidden>
         <div className="marquee flex w-max gap-10 whitespace-nowrap">
           {[...auctions, ...auctions].map((a, i) => (
             <span key={i} className="inline-flex items-center gap-3 text-sm text-mist">
@@ -120,7 +123,7 @@ export default function HomePage() {
           title="تصفّح المزادات حسب القسم"
           description="عشرة أقسام متخصصة، لكل منها قواعد تحقق خاصة بطبيعة الأصل: ملكية العقار، قابلية نقل النمرة، أصالة الساعة."
         />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+        <div className="reveal stagger grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
           {sections.map((s) => (
             <Link
               key={s.id}
@@ -147,7 +150,7 @@ export default function HomePage() {
           title={<>أصول مختارة <span className="gold-text">بعناية</span></>}
           action={{ href: "/auctions", label: "كل المزادات" }}
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="reveal stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {featured.slice(0, 4).map((a, i) => (
             <AuctionCard key={a.id} auction={a} priority={i < 2} />
           ))}
@@ -178,7 +181,7 @@ export default function HomePage() {
                 <span className="rounded-full bg-emerald-400/10 px-2.5 py-0.5 text-xs text-emerald-300">ثقة عالية</span>
               </div>
               <div className="relative h-3 rounded-full bg-white/10">
-                <div className="absolute inset-y-0 right-[18%] left-[22%] rounded-full bg-gradient-to-l from-gold-3 via-gold to-gold-2" />
+                <div className="meter-fill absolute inset-y-0 right-[18%] left-[22%] rounded-full bg-gradient-to-l from-gold-3 via-gold to-gold-2" />
                 <div className="absolute -top-1.5 right-[52%] size-6 rounded-full border-4 border-ink bg-white shadow" />
               </div>
               <div className="tabular mt-4 flex justify-between text-sm">
@@ -207,7 +210,7 @@ export default function HomePage() {
           title="آخر فرصة للمزايدة"
           action={{ href: "/auctions?sort=ending", label: "الأقرب انتهاءً" }}
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="reveal stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {endingSoon.map((a) => (
             <AuctionCard key={a.id} auction={a} />
           ))}
@@ -217,7 +220,7 @@ export default function HomePage() {
       {/* Why */}
       <Container className="pt-24">
         <SectionTitle eyebrow="لماذا إي مزاد" title="كل ما تحتاجه لمزاد عادل وآمن" />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="reveal stagger grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: ShieldCheck, title: "آمن وموثوق", text: "مصادقة قوية للمستخدمين وتحقق من البريد والهاتف والهوية لبناء مجتمع جدير بالثقة." },
             { icon: Brain, title: "تقييمات بالذكاء الاصطناعي", text: "اقتراحات مبنية على البيانات للأسعار المبدئية لتعظيم إمكانات سلعتك." },

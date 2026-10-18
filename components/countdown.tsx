@@ -53,7 +53,7 @@ export function Countdown({ endInDays, variant = "compact" }: { endInDays: numbe
     <div className="grid grid-cols-4 gap-2" aria-live="off">
       {units.map(([label, v]) => (
         <div key={label} className="rounded-xl border border-line bg-ink/60 px-2 py-3 text-center">
-          <div className={cn("tabular font-mono text-2xl font-semibold", urgent ? "text-rose-300" : "text-gold-2")}>
+          <div key={label === "ثانية" ? v ?? "wait" : label} className={cn("tabular font-mono text-2xl font-semibold", urgent ? "text-rose-300" : "text-gold-2", label === "ثانية" && "second-tick", urgent && "urgent-lot")}>
             {v === null ? "--" : pad(v)}
           </div>
           <div className="mt-1 text-[11px] text-mist">{label}</div>

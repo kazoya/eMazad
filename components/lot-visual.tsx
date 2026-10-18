@@ -55,21 +55,21 @@ export function LotVisual({
 
   if (v.kind === "images") {
     return (
-      <div className={cn("relative overflow-hidden bg-ink-3", className)}>
+      <div className={cn("media relative overflow-hidden bg-ink-3", className)}>
         <Image
           src={v.images[0]}
           alt={auction.title}
           fill
           priority={priority}
           sizes={size === "lg" ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"}
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover"
         />
       </div>
     );
   }
 
   return (
-    <div className={cn("relative grid place-items-center overflow-hidden bg-gradient-to-br bg-ink-3", section.tone, className)}>
+    <div className={cn("media relative grid place-items-center overflow-hidden bg-gradient-to-br bg-ink-3", section.tone, className)}>
       <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:18px_18px]" />
       {v.kind === "plate" && <Plate code={v.code} number={v.number} size={size} />}
       {v.kind === "phone" && <Phone number={v.number} operator={v.operator} size={size} />}

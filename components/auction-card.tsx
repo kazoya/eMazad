@@ -11,7 +11,7 @@ export function AuctionCard({ auction, priority }: { auction: Auction; priority?
   return (
     <Link
       href={`/auctions/${auction.id}`}
-      className="card-lift group flex flex-col overflow-hidden rounded-3xl border border-line bg-ink-2"
+      className="card-lift lot-card group flex flex-col overflow-hidden rounded-3xl border border-line bg-ink-2"
     >
       <div className="relative">
         <LotVisual auction={auction} priority={priority} className="aspect-[4/3]" />
