@@ -1,13 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Kufi_Arabic } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { LanguageRoot, SmoothLoader, StageMotion } from "@/components/stage";
 import { getSiteUrl, site } from "@/lib/config";
 import "./globals.css";
 
-const kufi = Noto_Kufi_Arabic({
-  subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
+const kufi = localFont({
+  src: [
+    { path: "./fonts/DroidArabicKufi-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/DroidArabicKufi-Bold.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-kufi",
   display: "swap",
 });
@@ -36,11 +39,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ar" dir="rtl" className={kufi.variable}>
       <body className="min-h-screen font-sans antialiased">
-        <div className="bg-grain min-h-screen">
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </div>
+        <LanguageRoot>
+          <SmoothLoader />
+          <StageMotion />
+          <div className="bg-grain min-h-screen">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </LanguageRoot>
       </body>
     </html>
   );

@@ -93,7 +93,21 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.lang-switch { display: flex; gap: 4px; border-radius: 999px; border: 1px solid rgb(212 169 74 / 0.4); padding: 3px; }
+.lang-switch button { min-height: 32px; min-width: 40px; border-radius: 999px; color: #f7f1e3; cursor: pointer; }
+.lang-switch button.is-active { background: #d4a94a; color: #0b1220; }
+.clock-card { padding: 8px 12px; border-radius: 16px; background: rgb(255 255 255 / 0.06); border: 1px solid rgb(255 255 255 / 0.14); text-align: center; }
+.clock-card .date, .clock-card .label { font-size: 10px; letter-spacing: 0.16em; color: #aab4c8; }
+.clock-card .time { display: flex; align-items: baseline; justify-content: center; gap: 4px; font-size: 18px; font-weight: 900; color: #f8fafc; text-shadow: 0 0 8px rgb(34 211 238 / 0.7); }
+.clock-card .seconds { font-size: 0.45em; color: #22d3ee; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+.smooth-loader { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; background: #0b1220; }
+.loader-ring { width: 54px; height: 54px; border-radius: 50%; border: 2px solid rgb(212 169 74 / 0.25); border-top-color: #d4a94a; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee, .live-dot, .rise { animation: none; }
+  .marquee, .live-dot, .rise, .loader-ring { animation: none; }
   .card-lift:hover { transform: none; }
+  .reveal { opacity: 1; transform: none; }
 }

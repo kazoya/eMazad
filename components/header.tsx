@@ -7,14 +7,15 @@ import { Menu, MessageCircle, X } from "lucide-react";
 import { Logo } from "./logo";
 import { cn } from "@/lib/utils";
 import { waLink } from "@/lib/config";
+import { DigitalClock, LangSwitch, T } from "./stage";
 
 const nav = [
-  { href: "/", label: "الرئيسية" },
-  { href: "/auctions", label: "المزادات" },
-  { href: "/appraise", label: "التقييم الذكي" },
-  { href: "/sell", label: "اعرض مزادك" },
-  { href: "/packages", label: "الباقات" },
-  { href: "/about", label: "من نحن" },
+  { href: "/", ar: "الرئيسية", en: "Home" },
+  { href: "/auctions", ar: "المزادات", en: "Auctions" },
+  { href: "/appraise", ar: "التقييم الذكي", en: "Appraisal" },
+  { href: "/sell", ar: "اعرض مزادك", en: "List a lot" },
+  { href: "/packages", ar: "الباقات", en: "Plans" },
+  { href: "/about", ar: "من نحن", en: "About" },
 ];
 
 export function Header() {
@@ -50,10 +51,14 @@ export function Header() {
                 isActive(item.href) ? "bg-white/10 text-gold-2" : "text-mist hover:text-white"
               )}
             >
-              {item.label}
+              <T ar={item.ar} en={item.en} />
             </Link>
           ))}
         </nav>
+        <div className="hidden items-center gap-2 xl:flex">
+          <DigitalClock />
+          <LangSwitch />
+        </div>
         <div className="flex items-center gap-2">
           <a
             href={waLink("مرحباً، أريد الاستفسار عن المزادات في إي مزاد")}
@@ -62,7 +67,7 @@ export function Header() {
             className="hidden items-center gap-2 rounded-full bg-gold px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-2 sm:flex"
           >
             <MessageCircle className="size-4" />
-            تواصل واتساب
+            <T ar="تواصل واتساب" en="WhatsApp" />
           </a>
           <button
             type="button"
@@ -84,7 +89,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className={cn("rounded-xl px-4 py-3 text-sm", isActive(item.href) ? "bg-white/10 text-gold-2" : "text-mist")}
             >
-              {item.label}
+              <T ar={item.ar} en={item.en} />
             </Link>
           ))}
         </nav>

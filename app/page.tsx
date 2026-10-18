@@ -9,6 +9,7 @@ import { LotVisual } from "@/components/lot-visual";
 import { Container, Eyebrow, SectionTitle } from "@/components/ui";
 import { auctions, countBySection, getSection, priceOf, sections } from "@/lib/data";
 import { jod, num } from "@/lib/utils";
+import { T } from "@/components/stage";
 
 export default function HomePage() {
   const spotlight = auctions.find((a) => a.id === "1")!;
@@ -21,19 +22,21 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <Container className="grid items-center gap-12 pb-16 pt-10 md:pt-16 lg:grid-cols-[1.1fr_1fr]">
+      <Container className="reveal grid items-center gap-12 pb-16 pt-10 md:pt-16 lg:grid-cols-[1.1fr_1fr]">
         <div className="rise space-y-7">
           <Eyebrow>
             <span className="live-dot inline-block size-1.5 rounded-full bg-emerald-400" /> {num(auctions.length)} مزاداً مفتوحاً الآن
           </Eyebrow>
           <h1 className="font-display text-[2.6rem] leading-[1.2] text-white md:text-6xl">
-            السوق لا يحتاج إعلاناً آخر،
+            <T ar="السوق لا يحتاج إعلاناً آخر،" en="The market does not need another ad." />
             <br />
-            <span className="gold-text">يحتاج ثقةً في السعر.</span>
+            <span className="gold-text"><T ar="يحتاج ثقةً في السعر." en="It needs trust in the price." /></span>
           </h1>
           <p className="max-w-xl text-lg leading-8 text-mist">
-            منصة مزادات إلكترونية حديثة تربط المشترين والبائعين في بيئة آمنة: عقارات، سيارات، نمر وأرقام مميزة،
-            مجوهرات ومقتنيات — مع تقييم مدعوم بالذكاء الاصطناعي ومزايدة شفافة لحظة بلحظة.
+            <T
+              ar="منصة مزادات إلكترونية حديثة تربط المشترين والبائعين في بيئة آمنة: عقارات، سيارات، نمر وأرقام مميزة، مجوهرات ومقتنيات — مع تقييم مدعوم بالذكاء الاصطناعي ومزايدة شفافة لحظة بلحظة."
+              en="An electronic auction platform that connects buyers and sellers in a safe room: property, cars, plates, jewelry, and collectibles, with AI-assisted appraisal and transparent bidding."
+            />
           </p>
           <form action="/auctions" className="glass flex items-center gap-2 rounded-full p-1.5 ps-5">
             <Search className="size-5 shrink-0 text-mist" />
@@ -43,15 +46,15 @@ export default function HomePage() {
               className="min-w-0 flex-1 bg-transparent py-2 text-sm text-white placeholder:text-mist/70 focus:outline-none"
             />
             <button className="rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-gold-2">
-              ابحث
+              <T ar="ابحث" en="Search" />
             </button>
           </form>
           <div className="flex flex-wrap gap-3 text-sm">
             <Link href="/auctions" className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-white hover:border-gold/50">
-              <Gavel className="size-4 text-gold-2" /> تصفّح المزادات
+              <Gavel className="size-4 text-gold-2" /> <T ar="تصفّح المزادات" en="Browse auctions" />
             </Link>
             <Link href="/appraise" className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-white hover:border-gold/50">
-              <Sparkles className="size-4 text-gold-2" /> قيّم أصلك مجاناً
+              <Sparkles className="size-4 text-gold-2" /> <T ar="قيّم أصلك مجاناً" en="Appraise your asset" />
             </Link>
           </div>
         </div>
