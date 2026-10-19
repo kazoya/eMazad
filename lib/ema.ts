@@ -19,6 +19,7 @@ export type Property = {
   img: number;
   startingPrice: number;
   marketPrice: number;
+  askingPrice?: number;
   currentBid: number;
   minIncrement: number;
   bidCount: number;
@@ -109,12 +110,13 @@ export function getProperty(id: string) {
 }
 
 export function depositAmount(property: Property) {
-  return Math.max(1000, Math.round((property.currentBid * 0.05) / 100) * 100);
+  const base = priceOf(property);
+  return Math.max(1000, Math.round((base * 0.05) / 100) * 100);
 }
 
 export function priceOf(property: Property) {
-  if (property.status === "direct") return property.currentBid || property.marketPrice;
-  return property.currentBid || property.startingPrice;
+  if (property.status === "direct") return property.askingPrice || property.marketPrice || property.currentBid || 0;
+  return property.currentBid || property.startingPrice || 0;
 }
 
 export const typeOptions = [

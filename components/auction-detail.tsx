@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { depositAmount, gallery, getProperty } from "@/lib/ema";
+import { depositAmount, gallery, getProperty, money, priceOf } from "@/lib/ema";
 import { formatLeft, useSite, useTick } from "@/components/site";
 import { statusKey } from "@/components/property-card";
 
@@ -66,14 +66,14 @@ export function AuctionDetail({ id }: { id: string }) {
           <span className={`pill pill-${property.status}`}>{t(statusKey(property))}</span>
           <h1 style={{ margin: 0 }}>{L(property.title)}</h1>
           <div className="muted">{property.ref} · {L(property.loc)}</div>
-          <div className="card-price">{property.currentBid.toLocaleString("en-US")} <span className="cur">{t("jod")}</span></div>
+          <div className="card-price">{money(priceOf(property))} <span className="cur">{t("jod")}</span></div>
           <div className="muted">{property.status === "direct" ? t("askingPrice") : t("currentBid")}</div>
           {property.status !== "direct" && property.status !== "finished" && (
             <div className={`card-timer ct-${property.status}`}><span>{t("endsIn")}</span><b>{formatLeft(property.endsAt, lang)}</b></div>
           )}
           <div className="facts">
-            <div><span className="muted">{t("startingPrice")}</span><b style={{ display: "block" }}>{property.startingPrice.toLocaleString("en-US")}</b></div>
-            <div><span className="muted">{t("minIncrement")}</span><b style={{ display: "block" }}>{property.minIncrement.toLocaleString("en-US")}</b></div>
+            <div><span className="muted">{t("startingPrice")}</span><b style={{ display: "block" }}>{money(property.startingPrice || property.askingPrice || 0)}</b></div>
+            <div><span className="muted">{t("minIncrement")}</span><b style={{ display: "block" }}>{money(property.minIncrement || 0)}</b></div>
           </div>
           <div className="muted">{paid ? t("depositPaid") : t("depositRequired")} · {deposit.toLocaleString("en-US")} {t("jod")}</div>
           {!paid && property.status !== "finished" && <button className="btn btn-gold btn-block" type="button" onClick={() => setSheet(true)}>{t("payDeposit")}</button>}
